@@ -459,13 +459,8 @@
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 700;
+            object-fit: cover;
+            border: 3px solid var(--primary);
         }
 
         .testimonial-info h4 {
@@ -564,6 +559,13 @@
         .price-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+        }
+
+        .price-product-image {
+            width: 100%;
+            max-width: 200px;
+            margin: 1.5rem auto;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.1));
         }
 
         .price-amount {
@@ -1028,7 +1030,7 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-header">
-                        <div class="testimonial-avatar">M</div>
+                        <img src="images/depo1.png" alt="Márcia S." class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Márcia S., 45 anos</h4>
                             <div class="stars">★★★★★</div>
@@ -1041,7 +1043,7 @@
 
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-header">
-                        <div class="testimonial-avatar">J</div>
+                        <img src="images/depo2.png" alt="Juliana P." class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Juliana P., 38 anos</h4>
                             <div class="stars">★★★★★</div>
@@ -1054,7 +1056,7 @@
 
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-header">
-                        <div class="testimonial-avatar">C</div>
+                        <img src="images/depo3.png" alt="Carla M." class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Carla M., 52 anos</h4>
                             <div class="stars">★★★★★</div>
@@ -1067,7 +1069,7 @@
 
                 <div class="testimonial-card fade-in">
                     <div class="testimonial-header">
-                        <div class="testimonial-avatar">S</div>
+                        <img src="images/depo4.png" alt="Sofia L." class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Sofia L., 29 anos</h4>
                             <div class="stars">★★★★★</div>
@@ -1120,6 +1122,7 @@
             <div class="pricing-grid">
                 <div class="price-card fade-in">
                     <h3>Experimente</h3>
+                    <img src="images/1-pote.webp" alt="1 Pote Fiber7" class="price-product-image">
                     <p class="price-old">De R$ 69,90</p>
                     <div class="price-amount">R$ 64,90</div>
                     <p>1 pote - 30 dias</p>
@@ -1134,6 +1137,7 @@
                 <div class="price-card featured fade-in">
                     <div class="price-badge">MAIS VENDIDO</div>
                     <h3>Combo Popular</h3>
+                    <img src="images/2-potes.png" alt="2 Potes Fiber7" class="price-product-image">
                     <p class="price-old">De R$ 139,80</p>
                     <div class="price-amount">R$ 118,83</div>
                     <p>2 potes - 60 dias</p>
@@ -1149,6 +1153,7 @@
                 <div class="price-card fade-in">
                     <div class="price-badge" style="background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);">MELHOR PREÇO</div>
                     <h3>Combo Completo</h3>
+                    <img src="images/4-potes.png" alt="4 Potes Fiber7" class="price-product-image">
                     <p class="price-old">De R$ 279,60</p>
                     <div class="price-amount">R$ 209,70</div>
                     <p>4 potes - 120 dias</p>
