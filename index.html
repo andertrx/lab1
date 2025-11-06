@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiber7 | Saúde Intestinal Natural</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #00C853;
+            --primary-dark: #00A845;
+            --primary-light: #69F0AE;
+            --secondary: #1A1A1A;
+            --text: #2C2C2C;
+            --text-light: #6B7280;
+            --bg: #FFFFFF;
+            --bg-light: #F9FAFB;
+            --border: #E5E7EB;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --shadow-lg: rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--secondary);
+        }
+
+        h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+        h2 { font-size: clamp(2rem, 5vw, 3rem); }
+        h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); }
+
+        p { color: var(--text-light); }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 0;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            color: var(--secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .cta-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 200, 83, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 6rem;
+            background: linear-gradient(180deg, var(--bg-light) 0%, var(--bg) 100%);
+            margin-top: 80px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 200, 83, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-badge::before {
+            content: "✓";
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-highlight {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .benefit-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1.125rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(0, 200, 83, 0.3);
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(0, 200, 83, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--secondary);
+            padding: 1.125rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.125rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-bg {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.1) 0%, rgba(105, 240, 174, 0.1) 100%);
+            border-radius: 50%;
+            filter: blur(60px);
+        }
+
+        .hero-image img {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.15));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Social Proof */
+        .social-proof {
+            padding: 3rem 0;
+            background: white;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .social-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-item p {
+            font-size: 0.95rem;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .problem-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.1) 0%, rgba(105, 240, 174, 0.1) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-subtitle {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .benefit-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            color: white;
+        }
+
+        /* Composition Section */
+        .composition-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .composition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .composition-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .composition-item {
+            background: white;
+            padding: 1.75rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .composition-item h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .composition-image {
+            position: relative;
+            text-align: center;
+        }
+
+        .composition-image img {
+            width: 100%;
+            max-width: 500px;
+            filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .stars {
+            color: #FFC107;
+            font-size: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        /* How it Works */
+        .how-section {
+            padding: 6rem 0;
+            background: var(--bg-light);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: white;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* Pricing */
+        .pricing-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .price-card {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .price-card.featured {
+            background: linear-gradient(135deg, rgba(0, 200, 83, 0.05) 0%, rgba(105, 240, 174, 0.05) 100%);
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .price-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.3);
+        }
+
+        .price-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .price-old {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 1.125rem;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .price-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .price-features li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Guarantee */
+        .guarantee-section {
+            padding: 4rem 0;
+            background: var(--bg-light);
+        }
+
+        .guarantee-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px var(--shadow);
+        }
+
+        .guarantee-badge {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            flex-shrink: 0;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: var(--bg-light);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--secondary);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: transform 0.3s ease;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-grid,
+            .composition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .pricing-grid,
+            .benefits-grid,
+            .steps-grid,
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-card.featured {
+                transform: scale(1);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .guarantee-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+
+            .hero {
+                padding: 6rem 0 3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .price-amount {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+
+    <!-- Tracking Scripts -->
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "u1ojh44jk2");
+    </script>
+
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1365038310604549');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1365038310604549&ev=PageView&noscript=1"
+    /></noscript>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <span class="logo-dot"></span>
+                    Fiber7
+                </a>
+                <a href="#kits" class="cta-header">Comprar Agora</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <div class="hero-badge">100% Natural e Eficaz</div>
+                    <h1>
+                        Seu intestino <span class="hero-highlight">feliz</span> começa aqui
+                    </h1>
+                    <p>
+                        Diga adeus ao inchaço, desconforto e irregularidade. Fiber7 é a solução natural que você precisa para um intestino saudável e uma vida mais leve.
+                    </p>
+
+                    <div class="hero-benefits">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <span><strong>Regularidade natural</strong> sem químicos agressivos</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <span><strong>Reduz inchaço</strong> e sensação de peso</span>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <span><strong>Mais energia</strong> e disposição no dia a dia</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta-group">
+                        <a href="#kits" class="btn-primary">Começar Agora</a>
+                        <a href="#beneficios" class="btn-secondary">Saber Mais</a>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="hero-image-bg"></div>
+                    <img src="images/product-desktop.webp" alt="Fiber7 - Suplemento de Fibras Natural">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="social-grid">
+                <div class="social-item fade-in">
+                    <h3>10mil+</h3>
+                    <p>Clientes Satisfeitos</p>
+                </div>
+                <div class="social-item fade-in">
+                    <h3>4.9★</h3>
+                    <p>Avaliação Média</p>
+                </div>
+                <div class="social-item fade-in">
+                    <h3>95%</h3>
+                    <p>Recomendam o Produto</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">O Problema</div>
+                <h2>Esses sintomas estão atrapalhando sua vida?</h2>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">😣</div>
+                    <h3>Intestino Irregular</h3>
+                    <p>Dias sem ir ao banheiro, causando desconforto e preocupação constante.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">🎈</div>
+                    <h3>Inchaço Abdominal</h3>
+                    <p>Sensação de barriga estufada que afeta sua confiança e bem-estar.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <div class="problem-icon">😰</div>
+                    <h3>Mal-Estar Constante</h3>
+                    <p>Falta de energia, mau humor e desconforto que atrapalham seu dia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section" id="beneficios">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">A Solução</div>
+                <h2>Transforme sua saúde intestinal em 3 passos</h2>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-card-icon">🎯</div>
+                    <h3>Regularidade Natural</h3>
+                    <p>Fibras prebióticas que promovem o funcionamento saudável do intestino, favorecendo evacuações regulares e confortáveis.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-card-icon">✨</div>
+                    <h3>Adeus ao Inchaço</h3>
+                    <p>Reduza a sensação de estufamento e desconforto abdominal. Sinta-se leve e confortável novamente.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-card-icon">💚</div>
+                    <h3>Flora Intestinal Saudável</h3>
+                    <p>Alimente as bactérias boas do seu intestino, essenciais para uma digestão eficiente e imunidade forte.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-card-icon">⚡</div>
+                    <h3>Mais Energia</h3>
+                    <p>Um intestino feliz significa mais disposição, melhor humor e qualidade de vida no dia a dia.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-card-icon">🌿</div>
+                    <h3>100% Natural</h3>
+                    <p>Fórmula com ingredientes naturais, sem químicos agressivos. Apenas 22 calorias por porção.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <div class="benefit-card-icon">🔬</div>
+                    <h3>Comprovado Cientificamente</h3>
+                    <p>Desenvolvido com base em estudos sobre fibras funcionais e saúde intestinal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Composition Section -->
+    <section class="composition-section" id="composicao">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">Fórmula Inteligente</div>
+                <h2>Ingredientes naturais que fazem a diferença</h2>
+            </div>
+
+            <div class="composition-grid">
+                <div class="composition-list">
+                    <div class="composition-item fade-in">
+                        <h4>Mix de Fibras Prebióticas</h4>
+                        <p>Polidextrose, Goma Guar e Amido Resistente que alimentam as bactérias boas do seu intestino, essenciais para a digestão saudável.</p>
+                    </div>
+                    <div class="composition-item fade-in">
+                        <h4>Fibra de Trigo e Aveia</h4>
+                        <p>Aumentam o bolo fecal e retêm água, ajudando a ter fezes mais macias e fáceis de eliminar naturalmente.</p>
+                    </div>
+                    <div class="composition-item fade-in">
+                        <h4>Zero Açúcar</h4>
+                        <p>Apenas 22 calorias por porção. Ideal para quem busca saúde sem comprometer a dieta equilibrada.</p>
+                    </div>
+                </div>
+
+                <div class="composition-image fade-in">
+                    <img src="images/product-desktop.webp" alt="Fiber7 Ingredientes">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section" id="depoimentos">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">Depoimentos</div>
+                <h2>Elas já transformaram suas vidas</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">M</div>
+                        <div class="testimonial-info">
+                            <h4>Márcia S., 45 anos</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Vivia inchada e mal-humorada. Depois que comecei a usar o Fiber7, senti uma grande diferença. Hoje, me sinto outra mulher, mais leve e feliz!"
+                    </p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">J</div>
+                        <div class="testimonial-info">
+                            <h4>Juliana P., 38 anos</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Sofri com intestino preso a vida toda. O Fiber7 me ajudou de forma natural, sem cólicas ou desconforto. Minha disposição é outra, recomendo!"
+                    </p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">C</div>
+                        <div class="testimonial-info">
+                            <h4>Carla M., 52 anos</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Além de ajudar meu intestino, sinto que minha pele ficou mais bonita e a sensação de peso diminuiu. É incrível como tudo melhora quando o intestino funciona bem."
+                    </p>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">S</div>
+                        <div class="testimonial-info">
+                            <h4>Sofia L., 29 anos</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        "Tinha medo de não funcionar, mas me surpreendi. É prático de tomar e o resultado veio com o uso. Finalmente me sinto bem com meu corpo, com menos inchaço."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="how-section" id="como-funciona">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">Como Funciona</div>
+                <h2>Sua jornada para um intestino feliz</h2>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Adaptação</h3>
+                    <p>Você introduz fibras funcionais na sua rotina, preparando seu intestino para uma mudança positiva.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">2</div>
+                    <h3>Equilíbrio</h3>
+                    <p>As fibras prebióticas nutrem sua flora intestinal, favorecendo a regularidade e diminuindo o desconforto.</p>
+                </div>
+                <div class="step-card fade-in">
+                    <div class="step-number">3</div>
+                    <h3>Bem-Estar</h3>
+                    <p>Você se sente mais leve, com mais energia, bom humor e conforto como parte da sua rotina diária.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing-section" id="kits">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">Escolha Seu Kit</div>
+                <h2>Comece sua transformação hoje</h2>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="price-card fade-in">
+                    <h3>Experimente</h3>
+                    <p class="price-old">De R$ 69,90</p>
+                    <div class="price-amount">R$ 64,90</div>
+                    <p>1 pote - 30 dias</p>
+                    <ul class="price-features">
+                        <li>Frete calculado no checkout</li>
+                        <li>7 dias de garantia</li>
+                        <li>Pagamento seguro</li>
+                    </ul>
+                    <a href="https://multvit.com.br/checkout/40061392:1" class="btn-primary" style="width: 100%; margin-top: 1.5rem;">Comprar Agora</a>
+                </div>
+
+                <div class="price-card featured fade-in">
+                    <div class="price-badge">MAIS VENDIDO</div>
+                    <h3>Combo Popular</h3>
+                    <p class="price-old">De R$ 139,80</p>
+                    <div class="price-amount">R$ 118,83</div>
+                    <p>2 potes - 60 dias</p>
+                    <ul class="price-features">
+                        <li>15% de desconto</li>
+                        <li>Frete grátis SP, PR, SC, RS</li>
+                        <li>7 dias de garantia</li>
+                        <li>Pagamento seguro</li>
+                    </ul>
+                    <a href="https://multvit.com.br/checkout/89362367:1" class="btn-primary" style="width: 100%; margin-top: 1.5rem;">Quero Este Kit</a>
+                </div>
+
+                <div class="price-card fade-in">
+                    <div class="price-badge" style="background: linear-gradient(135deg, #FF6B6B 0%, #EE5A6F 100%);">MELHOR PREÇO</div>
+                    <h3>Combo Completo</h3>
+                    <p class="price-old">De R$ 279,60</p>
+                    <div class="price-amount">R$ 209,70</div>
+                    <p>4 potes - 120 dias</p>
+                    <ul class="price-features">
+                        <li>25% de desconto</li>
+                        <li>Frete grátis SP, PR, SC, RS</li>
+                        <li>7 dias de garantia</li>
+                        <li>Pagamento seguro</li>
+                    </ul>
+                    <a href="https://multvit.com.br/checkout/89362747:1" class="btn-primary" style="width: 100%; margin-top: 1.5rem;">Maior Desconto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee -->
+    <section class="guarantee-section" id="garantia">
+        <div class="container">
+            <div class="guarantee-content fade-in">
+                <div class="guarantee-badge">🛡️</div>
+                <div>
+                    <h2>Garantia de 7 Dias - Risco Zero!</h2>
+                    <p style="font-size: 1.125rem; margin-bottom: 0;">
+                        Temos tanta confiança na fórmula de Fiber7 que oferecemos uma garantia incondicional. Se você não estiver satisfeito em até 7 dias, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia. A decisão é sua, o risco é nosso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header fade-in">
+                <div class="section-subtitle">Dúvidas</div>
+                <h2>Perguntas Frequentes</h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        Como devo tomar o suplemento?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Adicione 1 ou 2 scoops (medidas) em 200ml de água, leite, sucos ou chás e misture. Em média, 1 scoop ao dia é suficiente. Para casos de constipação mais severos, recomendamos 2 scoops.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        Quando verei os resultados?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Os resultados variam de pessoa para pessoa, porém 95% dos usuários relatam conseguir ir ao banheiro nas primeiras 24 horas. O uso contínuo é fundamental para que as fibras possam agir no seu organismo e contribuir para a regularidade intestinal.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        Tem contraindicações?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Fiber7 é um suplemento natural e seguro. No entanto, gestantes, lactantes, nutrizes e crianças de até 4 anos devem seguir a orientação de um médico ou nutricionista antes de iniciar o uso.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        Vocês entregam em todo o país?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim, fazemos envio para todo o Brasil através de Correios e transportadoras parceiras, garantindo que seu produto chegue com segurança.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="politica-privacidade.html">Política de Privacidade</a>
+                <a href="termos-de-uso.html">Termos de Uso</a>
+                <a href="https://rastreamento.correios.com.br/app/index.php">Rastrear Pedido</a>
+            </div>
+            <p>&copy; 2025 Fiber7. Todos os direitos reservados.</p>
+            <p>CNPJ: 04.529.592/0001-94</p>
+            <p style="font-size: 0.875rem; margin-top: 1rem; opacity: 0.7;">
+                Este produto não se destina a diagnosticar, tratar, curar ou prevenir doenças. Os resultados podem variar de pessoa para pessoa.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Header Scroll Effect
+        const header = document.querySelector('.header');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Fade In Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+
+                // Skip if it's just "#" or external link
+                if (href === '#' || href.startsWith('http')) return;
+
+                e.preventDefault();
+                const target = document.querySelector(href);
+
+                if (target) {
+                    const headerHeight = header.offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
